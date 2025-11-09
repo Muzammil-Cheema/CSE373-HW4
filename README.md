@@ -1,7 +1,9 @@
 # Homework 4: Set Cover
 
 ## How To Run
-After downloading any required packages (I only used what I expect is already available in most python configurations), run the main.py file. All test files are already downloaded in the "/Data" directory. Running the main.py file will test all files consecutively. 
+After downloading any required packages (pip install requirements.txt), run the main.py file. All test files are 
+already downloaded in the 
+"/Data" directory. Running the main.py file will test all files consecutively. 
 
 ## Notable Optimizations
 <ul>

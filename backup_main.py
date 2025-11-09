@@ -2,9 +2,7 @@ import time
 import re
 import pdb
 
-from numpy import number
-
-from functions import read_set_cover_file, dynamic_prune_subsets, bitmask_to_set, forced_set_selections
+from backup_functions import read_set_cover_file, dynamic_prune_subsets, bitmask_to_set, forced_set_selections
 
 
 # universe is a bitmask of the universe

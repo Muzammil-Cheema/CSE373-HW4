@@ -105,10 +105,3 @@ def is_subset(universe, covered, subset1, subset2) -> bool:
 # If update is true, we will set the integer-1th bit of the bitmask to 1, else we will set it to false.
 def update_bitmask(bitmask: int, integer: int, update: bool) -> int:
     return (bitmask | (1 << (integer - 1))) if update else (bitmask & ~(1 << (integer - 1)))
-
-
-
-
-
-
-
