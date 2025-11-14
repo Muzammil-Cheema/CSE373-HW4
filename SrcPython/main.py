@@ -2,7 +2,8 @@ import time
 import re
 import pdb
 
-from backup_functions import read_set_cover_file, dynamic_prune_subsets, bitmask_to_set, forced_set_selections
+from functions import read_set_cover_file, dynamic_prune_subsets, bitmask_to_set, forced_set_selections, \
+    is_solution_possible
 
 
 # universe is a bitmask of the universe
@@ -34,6 +35,8 @@ def set_cover(universe, subsets) -> tuple[None | list[int], int]:
             return
         if not candidate_sets:
             return
+        # if not is_solution_possible(universe, covered, candidate_sets):
+        #     return
 #--------------------------------------------------------
         TEST_RECURSIVE_MANDATORY_SELECTION = False
         if TEST_RECURSIVE_MANDATORY_SELECTION:
@@ -80,13 +83,12 @@ def set_cover(universe, subsets) -> tuple[None | list[int], int]:
 
 
 def run_file(identifier, filenames):
-    filename = None
     if type(identifier) is int:
         filename = filenames[identifier]
     else:
         filename = identifier
 
-    universe, subsets = read_set_cover_file(f"Data/{filename}")
+    universe, subsets = read_set_cover_file(f"../Data/{filename}")
     start = time.time()
     subsets, length = set_cover(universe, subsets)
     end = time.time()
@@ -116,9 +118,10 @@ def sort_filenames_by_numbers(filenames: list[str]) -> list[str]:
 
 
 if __name__ == '__main__':
-    filenames = ['s-rg-8-10', 's-X-12-6', 's-k-20-30', 's-k-20-35', 's-k-30-50', 's-k-30-55', 's-rg-31-15', 's-k-35-65', 's-rg-40-20', 's-k-40-60', 's-k-40-80', 's-k-50-95', 's-k-50-100', 's-rg-63-25', 's-k-100-175', 's-rg-109-35', 's-rg-118-30', 's-k-150-225', 's-k-150-250', 's-rg-155-40', 's-rg-197-45', 's-k-200-300', 's-rg-245-50', 's-rg-413-75', 's-rg-733-100']
+    filenames = ['s-rg-8-10', 's-X-12-6', 's-k-20-30', 's-k-20-35', 's-k-30-50', 's-k-30-55', 's-rg-31-15', 's-rg-40-20', 's-k-40-60']
     # filenames = sort_filenames_by_numbers(filenames)
     # print(filenames)
-    filenames_enumeration = list(enumerate(filenames))
-    print(filenames_enumeration)
-    run_file(13, filenames)
+    # filenames_enumeration = list(enumerate(filenames))
+    # print(filenames_enumeration)
+    for file in filenames:
+        run_file(file, filenames)

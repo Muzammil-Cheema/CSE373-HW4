@@ -1,5 +1,3 @@
-
-
 # Ignores empty subsets, since they will never be used.
 # Accepts absolute file path or relative file path within project directory
 def read_set_cover_file(filename):
